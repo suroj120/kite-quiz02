@@ -15,131 +15,134 @@
   </div>
 
   <script>
-    const quizData = [
-      {
-        question: "What is the main purpose of the Kite Validator Program?",
-        a: "To sell AI modules",
-        b: "To invite community validators to secure and grow the Kite network",
-        c: "To build NFT marketplaces",
-        d: "To create a Layer-2 bridge",
-        correct: "b",
-      },
-      {
-        question: "What type of blockchain is Kite?",
-        a: "Layer-2 scaling solution",
-        b: "Layer-1 blockchain for AI payments",
-        c: "Sidechain for Bitcoin",
-        d: "Centralized data network",
-        correct: "b",
-      },
-      {
-        question: "What is required for someone to apply as a validator?",
-        a: "High trading volume",
-        b: "Expertise, infrastructure, and long-term commitment",
-        c: "Social media followers",
-        d: "Government license",
-        correct: "b",
-      },
-      {
-        question: "How do Kite validators secure the network?",
-        a: "By running NFTs",
-        b: "By staking tokens and participating in consensus",
-        c: "By mining blocks with GPUs",
-        d: "By validating manually",
-        correct: "b",
-      },
-      {
-        question: "What happens if a validator acts maliciously?",
-        a: "Nothing happens",
-        b: "They receive a warning",
-        c: "Slashing is applied to their stake",
-        d: "They get promoted",
-        correct: "c",
-      },
-      {
-        question: "Which of the following is part of the evaluation criteria for validators?",
-        a: "Social media influence",
-        b: "Proven industry leadership or open-source contributions",
-        c: "Buying ads for the network",
-        d: "Running centralized services",
-        correct: "b",
-      },
-      {
-        question: "How long are the initial validator tokens locked?",
-        a: "One year",
-        b: "Two years",
-        c: "Four years",
-        d: "Six months",
-        correct: "c",
-      },
-      {
-        question: "What is a key responsibility of validators under 'Module Operations and Performance'?",
-        a: "Creating NFTs",
-        b: "Generating and attesting on-chain activity and meeting KPIs",
-        c: "Designing wallets",
-        d: "Building marketing campaigns",
-        correct: "b",
-      },
-      {
-        question: "What do validators gain from joining the Kite Validator Program?",
-        a: "Free hardware kits",
-        b: "Economic incentives, governance power, and technical collaboration",
-        c: "Guaranteed node ownership",
-        d: "Centralized profits",
-        correct: "b",
-      },
-      {
-        question: "What is expected under 'Community Collaboration and Ecosystem Building'?",
-        a: "Competing with other validators",
-        b: "Hiding validator performance data",
-        c: "Supporting builders, events, and professional knowledge sharing",
-        d: "Avoiding public engagement",
-        correct: "c",
-      },
-    ];
+  const quizData = [
+    {
+      question: "What is the core goal of the Kite Validator Program?",
+      a: "To centralize node control",
+      b: "To secure and grow the Kite network",
+      c: "To launch a new AI model",
+      d: "To replace validators with bots",
+      correct: "b",
+    },
+    {
+      question: "Who can apply to become a Kite validator?",
+      a: "Only company employees",
+      b: "Anyone with the right expertise and infrastructure",
+      c: "Only token holders",
+      d: "Only developers from Kite Labs",
+      correct: "b",
+    },
+    {
+      question: "Kite is a Layer-1 blockchain purpose-built for what?",
+      a: "Gaming applications",
+      b: "AI payments and services",
+      c: "Social networking",
+      d: "NFT marketplaces",
+      correct: "b",
+    },
+    {
+      question: "What do validators do to secure the network?",
+      a: "Mint NFTs",
+      b: "Stake tokens and participate in consensus",
+      c: "Run advertisements",
+      d: "Send data manually",
+      correct: "b",
+    },
+    {
+      question: "What happens if a validator acts maliciously?",
+      a: "They receive bonus tokens",
+      b: "They get slashed",
+      c: "Nothing happens",
+      d: "They gain governance power",
+      correct: "b",
+    },
+    {
+      question: "Which of these is part of the evaluation criteria?",
+      a: "Gaming experience",
+      b: "Open-source contributions",
+      c: "Personal social media following",
+      d: "Token trading history",
+      correct: "b",
+    },
+    {
+      question: "How long are validator tokens locked?",
+      a: "1 year",
+      b: "2 years",
+      c: "4 years",
+      d: "Forever",
+      correct: "c",
+    },
+    {
+      question: "Validators must maintain their full stake during which period?",
+      a: "Vesting period",
+      b: "Slashing window",
+      c: "Inflation cycle",
+      d: "Governance round",
+      correct: "a",
+    },
+    {
+      question: "What do validators earn for securing the network?",
+      a: "KITE tokens and rewards",
+      b: "NFTs",
+      c: "Voting badges",
+      d: "Stablecoins only",
+      correct: "a",
+    },
+    {
+      question: "What is one key responsibility of validators?",
+      a: "Maintaining network security and consensus",
+      b: "Issuing marketing ads",
+      c: "Developing new AI models",
+      d: "Minting memes",
+      correct: "a",
+    },
+  ];
 
-    const quizContainer = document.getElementById("quiz");
-    const resultsContainer = document.getElementById("results");
-    const submitButton = document.getElementById("submit");
+  const quizContainer = document.getElementById("quiz");
+  const resultsContainer = document.getElementById("results");
+  const submitButton = document.getElementById("submit");
 
-    function buildQuiz() {
-      const output = quizData.map((q, i) => {
-        return `
-          <div class="question">${i + 1}. ${q.question}</div>
-          <div class="answers">
-            <label><input type="radio" name="question${i}" value="a"> ${q.a}</label><br>
-            <label><input type="radio" name="question${i}" value="b"> ${q.b}</label><br>
-            <label><input type="radio" name="question${i}" value="c"> ${q.c}</label><br>
-            <label><input type="radio" name="question${i}" value="d"> ${q.d}</label><br>
-          </div>
-        `;
-      });
-      quizContainer.innerHTML = output.join("");
-    }
+  function buildQuiz() {
+    const output = quizData.map((q, i) => `
+      <div class="fade-in">
+        <div class="question">${i + 1}. ${q.question}</div>
+        <div class="answers">
+          <label><input type="radio" name="question${i}" value="a"> ${q.a}</label><br>
+          <label><input type="radio" name="question${i}" value="b"> ${q.b}</label><br>
+          <label><input type="radio" name="question${i}" value="c"> ${q.c}</label><br>
+          <label><input type="radio" name="question${i}" value="d"> ${q.d}</label><br>
+        </div>
+      </div>
+    `);
+    quizContainer.innerHTML = output.join("");
+  }
 
-    function showResults() {
-      const answerContainers = quizContainer.querySelectorAll(".answers");
-      let score = 0;
+  function showResults() {
+    const answerContainers = quizContainer.querySelectorAll(".answers");
+    let score = 0;
 
-      quizData.forEach((q, i) => {
-        const answerContainer = answerContainers[i];
-        const selector = `input[name=question${i}]:checked`;
-        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+    quizData.forEach((q, i) => {
+      const answerContainer = answerContainers[i];
+      const selector = `input[name=question${i}]:checked`;
+      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-        if (userAnswer === q.correct) {
-          score++;
-          answerContainers[i].style.color = "green";
-        } else {
-          answerContainers[i].style.color = "red";
-        }
-      });
+      if (userAnswer === q.correct) {
+        score++;
+        answerContainers[i].style.color = "limegreen";
+      } else {
+        answerContainers[i].style.color = "salmon";
+      }
+    });
 
-      resultsContainer.innerHTML = `<h2>You scored ${score} out of ${quizData.length}</h2>`;
-    }
+    resultsContainer.innerHTML = `<h2>You scored ${score} out of ${quizData.length}</h2>`;
+  }
 
+  document.addEventListener("DOMContentLoaded", () => {
     buildQuiz();
     submitButton.addEventListener("click", showResults);
-  </script>
+  });
+</script>
+
 
   <!-- ✅ Vercel Speed Insights -->
   <script defer src="https://cdn.vercel-insights.com/v1/script.debug.js"></script>
