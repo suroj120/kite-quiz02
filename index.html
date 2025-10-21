@@ -5,55 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kite Validator Quiz</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Add soft fade-in animation */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeIn 0.6s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Progress bar container */
-    .progress-container {
-      width: 100%;
-      background-color: #eee;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 15px;
-      height: 12px;
-    }
-
-    /* Progress bar fill */
-    .progress-bar {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, #007bff, #00c6ff);
-      transition: width 0.4s ease;
-    }
-
-    /* Progress text */
-    .progress-text {
-      text-align: center;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-  </style>
 </head>
 <body>
-  <div class="quiz-container fade-in">
+  <div class="quiz-container">
     <h1>Kite Validator Program Quiz</h1>
-    <div class="progress-text" id="progressText">Question 1 of 10</div>
-    <div class="progress-container">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-
     <div id="quiz"></div>
     <button id="submit">Submit Quiz</button>
     <div id="results"></div>
@@ -146,14 +101,12 @@
     const quizContainer = document.getElementById("quiz");
     const resultsContainer = document.getElementById("results");
     const submitButton = document.getElementById("submit");
-    const progressText = document.getElementById("progressText");
-    const progressBar = document.getElementById("progressBar");
 
     function buildQuiz() {
       const output = quizData.map((q, i) => {
         return `
-          <div class="question fade-in">${i + 1}. ${q.question}</div>
-          <div class="answers fade-in">
+          <div class="question">${i + 1}. ${q.question}</div>
+          <div class="answers">
             <label><input type="radio" name="question${i}" value="a"> ${q.a}</label><br>
             <label><input type="radio" name="question${i}" value="b"> ${q.b}</label><br>
             <label><input type="radio" name="question${i}" value="c"> ${q.c}</label><br>
@@ -162,14 +115,6 @@
         `;
       });
       quizContainer.innerHTML = output.join("");
-    }
-
-    function updateProgress() {
-      const total = quizData.length;
-      const answered = Array.from(document.querySelectorAll("input[type=radio]:checked")).length;
-      const percent = (answered / total) * 100;
-      progressBar.style.width = percent + "%";
-      progressText.textContent = `Question ${answered + 1 > total ? total : answered + 1} of ${total}`;
     }
 
     function showResults() {
@@ -189,15 +134,10 @@
         }
       });
 
-      resultsContainer.innerHTML = `<h2 class="fade-in">You scored ${score} out of ${quizData.length}</h2>`;
+      resultsContainer.innerHTML = `<h2>You scored ${score} out of ${quizData.length}</h2>`;
     }
 
     buildQuiz();
-
-    document.querySelectorAll("input[type=radio]").forEach((input) => {
-      input.addEventListener("change", updateProgress);
-    });
-
     submitButton.addEventListener("click", showResults);
   </script>
 
